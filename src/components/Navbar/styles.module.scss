@@ -1,0 +1,68 @@
+@import "../../index.scss";
+
+.navCnt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $theme-color-1;
+  height: 100vh;
+  width: 18vw;
+  color: white !important;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .navHead {
+    padding: 1rem;
+
+    .navProfile {
+      display: flex;
+      margin: 1rem 0;
+      align-items: center;
+
+      .profileImg {
+        position: relative;
+
+        &:after {
+          position: absolute;
+          content: "";
+          z-index: 1;
+          height: 7px;
+          width: 7px;
+          border-radius: 50%;
+          background-color: $theme-color-2;
+          bottom: 0.3rem;
+          right: 0.3rem;
+        }
+      }
+      .profileDetails {
+        margin: 0 1rem;
+
+        .ptier {
+          font-weight: 200;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .navMore,
+  .btnCnt {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .backBtn {
+    position: fixed;
+    left: 17vw;
+    top: 1rem;
+    cursor: pointer;
+    box-shadow: 6px 4px 14px 3px rgba(0, 0, 0, 0.434);
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+  }
+}

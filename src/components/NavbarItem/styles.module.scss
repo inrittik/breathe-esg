@@ -1,0 +1,40 @@
+@import "../../index.scss";
+
+.navItm {
+  padding: 0.8rem 1rem;
+  width: 100%;
+  position: relative;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  .navItmLogo {
+    width: 10%;
+    object-fit: cover;
+  }
+  .navItmName {
+    margin: 0 1rem;
+    font-size: 0.9rem;
+    width: 90%;
+  }
+}
+
+.itmActive {
+  background-color: $theme-color-2;
+  width: 70%;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 2.6rem;
+    border-radius: 50%;
+    right: -1.3rem;
+    bottom: 0rem;
+    background-color: $theme-color-2;
+  }
+}
