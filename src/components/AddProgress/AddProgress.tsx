@@ -37,7 +37,7 @@ const AddProgress = () => {
         <div className={styles.modalBody}>
           <div className={styles.addProjectElement}>
             <div className={styles.elementTitle}>Programme Name</div>
-            <div className={styles.elementName}>Project 1</div>
+            <div className={styles.elementName}>{selectedProject.name}</div>
           </div>
           <div className={styles.addProjectElement}>
             <div className={styles.elementTitle}>Add progress count</div>

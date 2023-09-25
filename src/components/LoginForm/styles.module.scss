@@ -1,0 +1,35 @@
+.loginForm {
+  width: 80%;
+  padding: 2rem;
+  margin: auto;
+
+  .formHead {
+    font-size: 2rem;
+    margin: 4rem auto;
+    text-align: center;
+  }
+
+  .email {
+    display: flex;
+    margin-bottom: 2rem;
+
+    label {
+      width: 30%;
+    }
+  }
+
+  .password {
+    display: flex;
+    margin-bottom: 2rem;
+
+    label {
+      width: 30%;
+    }
+  }
+
+  .btnCnt {
+    display: flex;
+    justify-content: center;
+    margin: 4rem auto;
+  }
+}

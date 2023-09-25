@@ -9,6 +9,11 @@ interface ProjectCardProps {
   target: number;
   score: number;
   prevScore: number;
+  monthlyScores: {
+    month: string;
+    target: number;
+    covered: number;
+  }[];
 }
 
 const ProjectCard = (props: ProjectCardProps) => {

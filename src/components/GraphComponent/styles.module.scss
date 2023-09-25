@@ -1,0 +1,14 @@
+.gCompCnt {
+  height: 100%;
+  .gBars {
+    display: flex;
+    height: 100%;
+    align-items: end;
+  }
+
+  .gLabel {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+  }
+}
