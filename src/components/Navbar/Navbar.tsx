@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAppSelector } from "../../app/hooks";
 import styles from "./styles.module.scss";
 import logo from "../../assets/logo.svg";
 import profile from "../../assets/profile.png";
@@ -63,6 +64,7 @@ const navOptions2 = [
 
 const Navbar = () => {
   const [active, setActive] = useState(navOptions[0].name);
+  const user = useAppSelector((state) => state.auth.user);
   return (
     <div className={styles.navCnt}>
       <div className={styles.backBtn}>
@@ -75,7 +77,9 @@ const Navbar = () => {
             <img src={profile} alt="" />
           </div>
           <div className={styles.profileDetails}>
-            <div className={styles.pname}>Tuki Joshua</div>
+            <div className={styles.pname}>
+              {user.fname} {user.lname}
+            </div>
             <div className={styles.ptier}>Gold member</div>
           </div>
         </div>
@@ -106,7 +110,7 @@ const Navbar = () => {
         })}
       </div>
       <div className={styles.btnCnt}>
-        <Button text='Go to help center'/>
+        <Button text="Go to help center" />
       </div>
     </div>
   );

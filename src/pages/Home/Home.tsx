@@ -6,6 +6,7 @@ import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import styles from "./styles.module.scss";
 import AddProgress from "../../components/AddProgress/AddProgress";
 import GraphComponent from "../../components/GraphComponent/GraphComponent";
+import { useNavigate } from "react-router-dom";
 
 interface projectIn {
   id: number;
@@ -21,8 +22,16 @@ interface projectIn {
 }
 
 const Home = () => {
+  const navigate = useNavigate();
   const projects = useAppSelector((state) => state.projects.projects);
   const addModal = useAppSelector((state) => state.projects.addModal);
+
+  const loginState = useAppSelector((state) => state.auth.loginState);
+  useEffect(() => {
+    if (!loginState) {
+      navigate("/auth");
+    }
+  }, []);
 
   return (
     <div className={styles.homePage}>

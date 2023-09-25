@@ -1,9 +1,12 @@
 import styles from "./styles.module.scss";
 import mainLogo from "../../assets/mainLogo.webp";
-import formHero from '../../assets/formHero.webp'
+import formHero from "../../assets/formHero.webp";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import SignupForm from "../../components/SignupForm/SignupForm";
+import { useAppSelector } from "../../app/hooks";
 
 const Auth = () => {
+  const loginForm = useAppSelector((state) => state.auth.loginForm);
   return (
     <div className={styles.authPage}>
       <div className={styles.authFormCnt}>
@@ -15,7 +18,7 @@ const Auth = () => {
           <img src={formHero} alt="breathe-esg" className={styles.earthLogo} />
         </div>
         <div className={styles.formMain}>
-          <LoginForm />
+          {loginForm ? <LoginForm /> : <SignupForm />}
         </div>
       </div>
     </div>

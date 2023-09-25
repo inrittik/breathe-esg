@@ -1,4 +1,4 @@
-.loginForm {
+.signupForm {
   width: 80%;
   padding: 2rem;
   margin: auto;
@@ -23,7 +23,24 @@
     display: flex;
     margin-bottom: 2rem;
     align-items: center;
+    label {
+      width: 30%;
+    }
+  }
 
+  .fName {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    label {
+      width: 30%;
+    }
+  }
+
+  .lName {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
     label {
       width: 30%;
     }
@@ -32,15 +49,15 @@
   .btnCnt {
     display: flex;
     justify-content: center;
-    margin: 4rem auto;
-    margin-bottom: 2rem;
+    margin: 2rem auto;
+    margin-bottom: 1rem;
   }
   .signup {
     cursor: pointer;
     width: 100%;
     text-align: center;
     transition: all 0.2s ease-in-out;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     &:hover {
       text-decoration: underline;

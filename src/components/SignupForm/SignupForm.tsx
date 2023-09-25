@@ -1,37 +1,38 @@
-import { useState } from "react";
 import styles from "./styles.module.scss";
 import { Input } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebase";
 import Button from "../Button/Button";
+import { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { changeForm, login } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../Loader/Loader";
 
-const LoginForm = () => {
+const SignupForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleSignup = () => {
     setLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const firebaseUser = userCredential.user;
-        console.log(userCredential);
         dispatch(
           login({
             email: firebaseUser.email as string,
-            fname: "First",
-            lname: "Last",
+            fname: firstName,
+            lname: lastName,
           })
         );
-        toast.success("SignIn Successful");
+        toast.success("SignUp Successful");
         navigate("/");
         setLoading(false);
       })
@@ -42,8 +43,26 @@ const LoginForm = () => {
       });
   };
   return (
-    <div className={styles.loginForm}>
-      <div className={styles.formHead}>LOGIN</div>
+    <div className={styles.signupForm}>
+      <div className={styles.formHead}>SIGNUP</div>
+      <div className={styles.fName}>
+        <label>First Name</label>
+        <Input
+          placeholder="John"
+          size="large"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+      </div>
+      <div className={styles.lName}>
+        <label>Last Name</label>
+        <Input
+          placeholder="Stones"
+          size="large"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </div>
       <div className={styles.email}>
         <label>Email*</label>
         <Input
@@ -65,7 +84,7 @@ const LoginForm = () => {
       </div>
 
       <div className={styles.btnCnt}>
-        <Button text="Login" handler={handleLogin} />
+        <Button text="Signup" handler={handleSignup} />
       </div>
 
       {loading ? <Loader /> : ""}
@@ -75,10 +94,10 @@ const LoginForm = () => {
           dispatch(changeForm());
         }}
       >
-        Create an account? Signup
+        Already have an account? Login
       </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default SignupForm;
