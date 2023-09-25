@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import {useEffect} from 'react'
+import { useAppSelector } from "../../app/hooks";
 import DropDown from "../../components/DropDown/DropDown";
 import Navbar from "../../components/Navbar/Navbar";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
@@ -14,12 +15,13 @@ interface projectIn {
 }
 
 const Home = () => {
-  const projects = useSelector((state: any) => state.projects.projects);
+  const projects = useAppSelector((state) => state.projects.projects);
+  const addModal = useAppSelector((state) => state.projects.addModal);
 
   return (
     <div className={styles.homePage}>
       <Navbar />
-      <AddProgress />
+      {addModal.active && <AddProgress />}
       <div className={styles.homeMain}>
         <div className={styles.homeHead}>
           <div className={styles.homeTitle}>Programme</div>

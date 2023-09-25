@@ -1,6 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+interface InitialState {
+  projects: {
+    id: number;
+    name: string;
+    target: number;
+    score: number;
+    prevScore: number;
+  }[];
+  addModal: {
+    active: boolean;
+    projectId: number;
+  };
+}
+
+interface updateProjectAction {
+  id: number;
+  scoreAdded: number;
+}
+
+const initialState: InitialState = {
   projects: [
     {
       id: 1,
@@ -31,21 +50,34 @@ const initialState = {
       prevScore: 0,
     },
   ],
+  addModal: {
+    active: false,
+    projectId: 0,
+  },
 };
 
 export const projectSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
-    updateProject: (state, action) => {
-      state.projects[action.payload.id].prevScore =
-        state.projects[action.payload.id].score;
-      state.projects[action.payload.id].score = action.payload.scoreAdded;
+    updateProject: (state, action: PayloadAction<updateProjectAction>) => {
+      state.projects[action.payload.id-1].prevScore =
+        state.projects[action.payload.id-1].score;
+      state.projects[action.payload.id-1].score += action.payload.scoreAdded;
+    },
+    activateModal: (state, action: PayloadAction<number>) => {
+      (state.addModal.active = true),
+        (state.addModal.projectId = action.payload);
+    },
+    inactivateModal: (state) => {
+      state.addModal.active = false;
+      state.addModal.projectId = 0;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateProject } = projectSlice.actions;
+export const { updateProject, activateModal, inactivateModal } =
+  projectSlice.actions;
 
 export default projectSlice.reducer;

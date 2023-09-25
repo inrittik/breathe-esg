@@ -106,7 +106,7 @@ const Navbar = () => {
         })}
       </div>
       <div className={styles.btnCnt}>
-        <Button />
+        <Button text='Go to help center'/>
       </div>
     </div>
   );

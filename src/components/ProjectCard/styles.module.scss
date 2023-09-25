@@ -31,10 +31,42 @@
     .pCardChange {
       font-size: 0.8rem;
       font-weight: 600;
-      padding: 0.3rem 1rem;
+      padding: 0.3rem 1.2rem;
       border-radius: 10px;
       background-color: $theme-color-3;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .arrow {
+        background-color: $theme-color-2;
+        width: 2px;
+        height: 10px;
+        position: relative;
+        margin-right: 1rem;
+
+        &::before {
+          content: "";
+          background-color: $theme-color-2;
+          width: 1.6px;
+          height: 6px;
+          position: absolute;
+          top: 0rem;
+          left: -0.1rem;
+          transform: rotateZ(45deg);
+        }
+        &::after {
+          content: "";
+          background-color: $theme-color-2;
+          width: 1.6px;
+          height: 6px;
+          position: absolute;
+          top: 0rem;
+          left: 0.15rem;
+          transform: rotateZ(-45deg);
+        }
+      }
     }
   }
 

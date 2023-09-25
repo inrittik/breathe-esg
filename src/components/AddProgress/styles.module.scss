@@ -14,8 +14,40 @@
 
   .modal {
     background-color: white;
-    width: 30%;
+    width: 35%;
     padding: 1rem 2rem;
     border-radius: 10px;
+
+    .modalHead {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .modalBody {
+      margin: 1rem auto;
+
+      .addProjectElement {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+
+        .elementTitle {
+          color: rgb(125, 125, 125);
+          font-size: 0.85rem;
+          font-weight: 500;
+          margin-right: 1rem;
+        }
+
+        .elementName {
+          font-size: 1rem;
+          font-weight: 600;
+          width: 70%;
+        }
+      }
+
+      .modalCntrols {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
   }
 }
