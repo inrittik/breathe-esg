@@ -8,7 +8,6 @@ interface NavbarItmProps {
 }
 
 const NavbarItem = (props: NavbarItmProps) => {
-  console.log(props.activeOption);
   return (
     <div
       className={`${styles.navItm} ${

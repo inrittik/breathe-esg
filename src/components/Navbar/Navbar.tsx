@@ -81,24 +81,26 @@ const Navbar = () => {
         </div>
       </div>
       <div className={styles.navBody}>
-        {navOptions.map((option) => {
+        {navOptions.map((option, ind) => {
           return (
             <NavbarItem
               {...option}
               activeOption={active}
               setActive={setActive}
+              key={ind}
             />
           );
         })}
       </div>
       <div className={styles.navMore}>More</div>
       <div className={styles.navBody}>
-        {navOptions2.map((option) => {
+        {navOptions2.map((option, ind) => {
           return (
             <NavbarItem
               {...option}
               activeOption={active}
               setActive={setActive}
+              key={ind}
             />
           );
         })}
