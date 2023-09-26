@@ -25,6 +25,7 @@ interface updateProjectAction {
 }
 
 const initialState: InitialState = {
+  // list of projects
   projects: [
     {
       id: 1,
@@ -70,17 +71,17 @@ const initialState: InitialState = {
         {
           month: "Feb",
           target: 250,
-          covered: 100,
+          covered: 120,
         },
         {
           month: "Mar",
-          target: 250,
-          covered: 100,
+          target: 200,
+          covered: 180,
         },
         {
           month: "Apr",
-          target: 250,
-          covered: 100,
+          target: 220,
+          covered: 180,
         },
       ],
     },
@@ -94,22 +95,22 @@ const initialState: InitialState = {
         {
           month: "Jan",
           target: 250,
-          covered: 100,
+          covered: 200,
         },
         {
           month: "Feb",
           target: 250,
-          covered: 100,
+          covered: 160,
         },
         {
           month: "Mar",
-          target: 250,
-          covered: 100,
+          target: 220,
+          covered: 120,
         },
         {
           month: "Apr",
-          target: 250,
-          covered: 100,
+          target: 200,
+          covered: 160,
         },
       ],
     },
@@ -143,6 +144,7 @@ const initialState: InitialState = {
       ],
     },
   ],
+  // add progress modal
   addModal: {
     active: false,
     projectId: 0,
@@ -153,15 +155,18 @@ export const projectSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
+    // update a project's score
     updateProject: (state, action: PayloadAction<updateProjectAction>) => {
       state.projects[action.payload.id-1].prevScore =
         state.projects[action.payload.id-1].score;
       state.projects[action.payload.id-1].score += action.payload.scoreAdded;
     },
+    //activate the add progress modal
     activateModal: (state, action: PayloadAction<number>) => {
       (state.addModal.active = true),
         (state.addModal.projectId = action.payload);
     },
+    //close the add progress modal
     inactivateModal: (state) => {
       state.addModal.active = false;
       state.addModal.projectId = 0;

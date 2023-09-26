@@ -6,6 +6,7 @@ interface BarItmProps {
   value: number;
 }
 
+// dynamic bar element with variable height, color and title value(hover)
 const BarItm = (props: BarItmProps) => {
   return (
     <span

@@ -7,6 +7,7 @@ interface GraphComponentProps {
   covered: number;
 }
 
+// bar graph component consisting of two bar elements with different scale factor
 const GraphComponent = (props: GraphComponentProps) => {
   let scaleFactor1 = props.target / 250,
     scaleFactor2 = props.covered / 250;

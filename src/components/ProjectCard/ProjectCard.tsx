@@ -17,7 +17,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = (props: ProjectCardProps) => {
-  let percentInc = 0;
+  let percentInc = 0; // track percentage increase in project score
   if (props.score && props.prevScore) {
     percentInc = Math.round(
       ((props.score - props.prevScore) / props.prevScore) * 100
@@ -26,6 +26,8 @@ const ProjectCard = (props: ProjectCardProps) => {
     percentInc = 100;
   }
   const dispatch = useAppDispatch();
+
+  // open modal
   const handleClick = () => {
     dispatch(activateModal(props.id));
   };
@@ -43,6 +45,7 @@ const ProjectCard = (props: ProjectCardProps) => {
       </div>
       <div className={styles.cardTarget}>
         TARGET
+        {/* progress bar */}
         <Progress
           showInfo={false}
           percent={Math.round((props.score / props.target) * 100)}

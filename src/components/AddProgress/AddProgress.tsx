@@ -14,12 +14,15 @@ const AddProgress = () => {
   const projects = useAppSelector((state) => state.projects.projects);
   const [sliderValue, setSliderValue] = useState(0);
   const selectedProject = projects[addModal.projectId - 1];
+
+  // modal close
   const handleClick = (e: any) => {
     if (e.target.className !== "_modalCnt_1kilg_12") return;
 
     dispatch(inactivateModal());
   };
 
+  // add progress confirmation
   const handleSubmit = () => {
     if (!addModal.active) return;
     dispatch(

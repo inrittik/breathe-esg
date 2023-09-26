@@ -18,6 +18,7 @@ const Auth = () => {
           <img src={formHero} alt="breathe-esg" className={styles.earthLogo} />
         </div>
         <div className={styles.formMain}>
+          {/* login/signup form based on redux state */}
           {loginForm ? <LoginForm /> : <SignupForm />}
         </div>
       </div>
